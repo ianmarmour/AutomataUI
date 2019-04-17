@@ -1,0 +1,55 @@
+{
+  "name": "automataui",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@types/jest": "24.0.11",
+    "@types/node": "11.13.4",
+    "@types/react": "16.8.13",
+    "@types/react-dom": "16.8.4",
+    "bootstrap": "^4.3.1",
+    "graphql": "^14.2.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-relay": "^3.0.0",
+    "react-relay-network-modern": "^3.0.1",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "2.1.8",
+    "typescript": "3.4.3"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-macros": "^2.5.1",
+    "babel-plugin-relay": "^2.0.0",
+    "css-loader": "^2.1.1",
+    "file-loader": "^3.0.1",
+    "html-webpack-plugin": "^4.0.0-beta.5",
+    "react-bootstrap": "^1.0.0-beta.8",
+    "relay-compiler": "^3.0.0",
+    "relay-compiler-language-typescript": "^2.0.0",
+    "relay-compiler-webpack-plugin": "^3.0.0",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.3.1"
+  }
+}
