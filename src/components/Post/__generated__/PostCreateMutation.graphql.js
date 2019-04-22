@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash f2032dba3b962ec2853315e10bafac0d
+ * @relayHash aa039f2d8919a6614e277099273afbe0
  */
 
 /* eslint-disable */
@@ -9,19 +9,19 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-export type PostInput = {|
+export type postInput = {|
   title?: ?string,
+  author?: ?string,
   content?: ?string,
-  authorId: string,
 |};
 export type PostCreateMutationVariables = {|
-  input: PostInput
+  input: postInput
 |};
 export type PostCreateMutationResponse = {|
-  +createPost: ?{|
+  +createPost: {|
     +title: ?string,
     +content: ?string,
-    +authorId: string,
+    +author: ?string,
   |}
 |};
 export type PostCreateMutation = {|
@@ -33,12 +33,12 @@ export type PostCreateMutation = {|
 
 /*
 mutation PostCreateMutation(
-  $input: PostInput!
+  $input: postInput!
 ) {
   createPost(input: $input) {
     title
     content
-    authorId
+    author
     id
   }
 }
@@ -49,7 +49,7 @@ var v0 = [
   {
     "kind": "LocalArgument",
     "name": "input",
-    "type": "PostInput!",
+    "type": "postInput!",
     "defaultValue": null
   }
 ],
@@ -58,7 +58,7 @@ v1 = [
     "kind": "Variable",
     "name": "input",
     "variableName": "input",
-    "type": "PostInput"
+    "type": "postInput"
   }
 ],
 v2 = {
@@ -78,7 +78,7 @@ v3 = {
 v4 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "authorId",
+  "name": "author",
   "args": null,
   "storageKey": null
 };
@@ -139,11 +139,11 @@ return {
     "operationKind": "mutation",
     "name": "PostCreateMutation",
     "id": null,
-    "text": "mutation PostCreateMutation(\n  $input: PostInput!\n) {\n  createPost(input: $input) {\n    title\n    content\n    authorId\n    id\n  }\n}\n",
+    "text": "mutation PostCreateMutation(\n  $input: postInput!\n) {\n  createPost(input: $input) {\n    title\n    content\n    author\n    id\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '198c9d8f3a270aac2ccd99f19681a903';
+(node/*: any*/).hash = '134573a1d30285e48fe9a4d2f17fe17d';
 module.exports = node;

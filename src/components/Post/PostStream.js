@@ -30,7 +30,7 @@ const PostStreamContainer = createFragmentContainer(PostStream, {
     fragment PostStream_posts on Post @relay(plural: true) {
       title
       content
-      authorId
+      author
     }
   `
 });

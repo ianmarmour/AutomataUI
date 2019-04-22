@@ -1,34 +1,48 @@
-  input AuthorInput {
-    name: String
-  }
+# source: http://localhost:4000
+# timestamp: Mon Apr 22 2019 00:28:01 GMT-0700 (Pacific Daylight Time)
 
-  input PostInput {
-    title: String
-    content: String
-    authorId: ID!
-  }
+directive @cacheControl(maxAge: Int, scope: CacheControlScope) on FIELD_DEFINITION | OBJECT | INTERFACE
 
-  type Post {
-    id: ID!
-    title: String
-    content: String
-    authorId: ID!
-  }
+type Author {
+  email: String
+  name: String
+  id: ID!
+}
 
-  type Author {
-    id: ID!
-    name: String
-  }
+input authorInput {
+  email: String
+  name: String
+}
 
-  type Query {
-    posts: [Post]
-    authors: [Author]
-    getPost(id: ID!): Post
-    getAuthor(id: ID!): Author
-  }
+enum CacheControlScope {
+  PUBLIC
+  PRIVATE
+}
 
-  type Mutation {
-    createAuthor(input: AuthorInput): Author
-    createPost(input: PostInput): Post
-    updatePost(id: ID!, input: PostInput): Post
-  }
+type Mutation {
+  createAuthor(input: authorInput): Author!
+  createPost(input: postInput): Post!
+}
+
+type Post {
+  title: String
+  author: String
+  content: String
+  id: ID!
+}
+
+input postInput {
+  title: String
+  author: String
+  content: String
+}
+
+type Query {
+  authors: [Author]
+  posts: [Post]
+  getPost(id: ID): Post
+  getAuthor(id: ID): Author
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload

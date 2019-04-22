@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 9cffad7ae5724dbdc17b2a02de643a32
+ * @relayHash ce49645d37acc1220458ff17d4f1d338
  */
 
 /* eslint-disable */
@@ -34,7 +34,7 @@ query PostsQuery {
 fragment PostStream_posts on Post {
   title
   content
-  authorId
+  author
 }
 */
 
@@ -96,7 +96,7 @@ const node/*: ConcreteRequest*/ = {
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "authorId",
+            "name": "author",
             "args": null,
             "storageKey": null
           },
@@ -115,7 +115,7 @@ const node/*: ConcreteRequest*/ = {
     "operationKind": "query",
     "name": "PostsQuery",
     "id": null,
-    "text": "query PostsQuery {\n  posts {\n    ...PostStream_posts\n    id\n  }\n}\n\nfragment PostStream_posts on Post {\n  title\n  content\n  authorId\n}\n",
+    "text": "query PostsQuery {\n  posts {\n    ...PostStream_posts\n    id\n  }\n}\n\nfragment PostStream_posts on Post {\n  title\n  content\n  author\n}\n",
     "metadata": {}
   }
 };
