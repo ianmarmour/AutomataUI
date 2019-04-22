@@ -11,10 +11,15 @@ class PostStream extends Component {
       <Container>
         <Row>
           <Col />
-          <Col>
+          <Col xs={6}>
             <div className="PostsStream">
               {this.props.posts.map(post => (
-                <Post title={post.title} content={post.content} />
+                <Post
+                  className="PostEntry"
+                  date={post.date}
+                  title={post.title}
+                  content={post.content}
+                />
               ))}
             </div>
           </Col>
@@ -29,6 +34,7 @@ const PostStreamContainer = createFragmentContainer(PostStream, {
   posts: graphql`
     fragment PostStream_posts on Post @relay(plural: true) {
       title
+      date
       content
       author
     }

@@ -7,6 +7,7 @@ class Post extends Component {
     return (
       <Media>
         <Media.Body>
+          <h8>{this.props.date}</h8>
           <h1>{this.props.title}</h1>
           <p>{this.props.content}</p>
         </Media.Body>

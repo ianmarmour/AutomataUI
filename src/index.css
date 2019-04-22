@@ -39,3 +39,11 @@ body,
 
   align-items: center;
 }
+
+.media {
+  padding-bottom: 1em;
+}
+
+.PostsStream {
+  padding-top: 2em;
+}

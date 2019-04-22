@@ -12,6 +12,7 @@ import type { FragmentReference } from "relay-runtime";
 declare export opaque type PostStream_posts$ref: FragmentReference;
 export type PostStream_posts = $ReadOnlyArray<{|
   +title: ?string,
+  +date: ?any,
   +content: ?string,
   +author: ?string,
   +$refType: PostStream_posts$ref,
@@ -38,6 +39,13 @@ const node/*: ReaderFragment*/ = {
     {
       "kind": "ScalarField",
       "alias": null,
+      "name": "date",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
       "name": "content",
       "args": null,
       "storageKey": null
@@ -52,5 +60,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '0d6f78657d23a3dec92f228630199332';
+(node/*: any*/).hash = 'a8e1c81eb4a7a11f1878a7c1c7ea90f2';
 module.exports = node;
