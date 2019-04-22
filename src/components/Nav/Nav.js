@@ -10,6 +10,7 @@ class Nav extends Component {
 
         <Foo className="mr-auto">
           <Foo.Link href="/">{"Home"}</Foo.Link>
+          <Foo.Link href="/compose_post">{"Compose"}</Foo.Link>
           <Foo.Link href="/login">{"Login"}</Foo.Link>
         </Foo>
       </Navbar>
