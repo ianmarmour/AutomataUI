@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import { Auth } from "aws-amplify";
 
 export default class Login extends Component {
   constructor(props) {
@@ -12,7 +13,9 @@ export default class Login extends Component {
 
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      confirmationcode: "",
+      isAwaitingConfirmation: false
     };
   }
 
@@ -38,15 +41,39 @@ export default class Login extends Component {
   };
 
   handleSubmit = event => {
-    this.httpGetAsync(
-      "http://localhost:4000/login?username=amy&password=amyspassword",
-      () => {
-        console.log("Authenticated");
-      }
-    );
+    event.preventDefault();
+
+    console.log(this.state);
+    if (this.state.submission === "signup") {
+      Auth.signUp({
+        username: this.state.email,
+        password: this.state.password,
+        attributes: {
+          email: "ianmarmour@gmail.com"
+        }
+      });
+    } else if (this.state.submission == "confirm") {
+      // After retrieving the confirmation code from the user
+      Auth.confirmSignUp(this.state.email, this.state.confirmationcode, {
+        // Optional. Force user confirmation irrespective of existing alias. By default set to True.
+        forceAliasCreation: true
+      })
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
+    } else {
+      Auth.signIn(this.state.email, this.state.password)
+        .then(success => console.log("successful sign in"))
+        .catch(err => {
+          this.setState({
+            // isAwaitingConfirmation: true
+          });
+        });
+    }
   };
 
   render() {
+    const isAwaitingConfirmation = this.state.isAwaitingConfirmation;
+
     return (
       <Container className="flexbox-container-login">
         <Col />
@@ -70,9 +97,61 @@ export default class Login extends Component {
                 type="password"
               />
             </Form.Group>
-            <Button block disabled={!this.validateForm()} type="submit">
+            {isAwaitingConfirmation ? (
+              <Form.Group controlId="confirmationcode">
+                <Form.Label>Confirmation Code</Form.Label>
+                <Form.Control
+                  value={this.state.confirmationcode}
+                  onChange={this.handleChange}
+                  type="confirmationcode"
+                />
+              </Form.Group>
+            ) : (
+              <div />
+            )}
+            <Button
+              value="login"
+              block
+              onClick={() => {
+                this.setState({
+                  submission: "login"
+                });
+              }}
+              disabled={!this.validateForm()}
+              type="submit"
+            >
               Login
             </Button>
+            <Button
+              value="signup"
+              block
+              onClick={() => {
+                this.setState({
+                  submission: "signup"
+                });
+              }}
+              disabled={!this.validateForm()}
+              type="submit"
+            >
+              Sign Up
+            </Button>
+            {isAwaitingConfirmation ? (
+              <Button
+                value="signup"
+                block
+                onClick={() => {
+                  this.setState({
+                    submission: "confirm"
+                  });
+                }}
+                disabled={!this.validateForm()}
+                type="submit"
+              >
+                Confirm Sign Up
+              </Button>
+            ) : (
+              <div />
+            )}
           </Form>
         </Col>
         <Col />
