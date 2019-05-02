@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 27d486d203ce859c46438d0a158fa727
+ * @relayHash 4c38ca43ac48014aa7495b2f0f3ba596
  */
 
 /* eslint-disable */
@@ -9,16 +9,12 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-export type authorInput = {|
-  email?: ?string,
-  name?: ?string,
-|};
 export type AuthorCreateMutationVariables = {|
-  input: authorInput
+  name: string
 |};
 export type AuthorCreateMutationResponse = {|
   +createAuthor: {|
-    +name: ?string
+    +name: string
   |}
 |};
 export type AuthorCreateMutation = {|
@@ -30,9 +26,9 @@ export type AuthorCreateMutation = {|
 
 /*
 mutation AuthorCreateMutation(
-  $input: authorInput!
+  $name: String!
 ) {
-  createAuthor(input: $input) {
+  createAuthor(name: $name) {
     name
     id
   }
@@ -43,17 +39,17 @@ const node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "input",
-    "type": "authorInput!",
+    "name": "name",
+    "type": "String!",
     "defaultValue": null
   }
 ],
 v1 = [
   {
     "kind": "Variable",
-    "name": "input",
-    "variableName": "input",
-    "type": "authorInput"
+    "name": "name",
+    "variableName": "name",
+    "type": "String!"
   }
 ],
 v2 = {
@@ -116,11 +112,11 @@ return {
     "operationKind": "mutation",
     "name": "AuthorCreateMutation",
     "id": null,
-    "text": "mutation AuthorCreateMutation(\n  $input: authorInput!\n) {\n  createAuthor(input: $input) {\n    name\n    id\n  }\n}\n",
+    "text": "mutation AuthorCreateMutation(\n  $name: String!\n) {\n  createAuthor(name: $name) {\n    name\n    id\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'e539d1e4948dde87b0bb125393dd4dff';
+(node/*: any*/).hash = 'faa44a09f1e30b12f188ba6ad86c7776';
 module.exports = node;

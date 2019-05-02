@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash c11fd1d516de836e64267a4ab8b4474a
+ * @relayHash 28a1204530c7042df5d128bb6faa50e3
  */
 
 /* eslint-disable */
@@ -12,7 +12,7 @@ import type { ConcreteRequest } from 'relay-runtime';
 type PostStream_posts$ref = any;
 export type PostsQueryVariables = {||};
 export type PostsQueryResponse = {|
-  +posts: ?$ReadOnlyArray<?{|
+  +posts: $ReadOnlyArray<{|
     +$fragmentRefs: PostStream_posts$ref
   |}>
 |};
@@ -32,8 +32,8 @@ query PostsQuery {
 }
 
 fragment PostStream_posts on Post {
+  id
   title
-  date
   content
   author
 }
@@ -83,14 +83,14 @@ const node/*: ConcreteRequest*/ = {
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "title",
+            "name": "id",
             "args": null,
             "storageKey": null
           },
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "date",
+            "name": "title",
             "args": null,
             "storageKey": null
           },
@@ -107,13 +107,6 @@ const node/*: ConcreteRequest*/ = {
             "name": "author",
             "args": null,
             "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "id",
-            "args": null,
-            "storageKey": null
           }
         ]
       }
@@ -123,7 +116,7 @@ const node/*: ConcreteRequest*/ = {
     "operationKind": "query",
     "name": "PostsQuery",
     "id": null,
-    "text": "query PostsQuery {\n  posts {\n    ...PostStream_posts\n    id\n  }\n}\n\nfragment PostStream_posts on Post {\n  title\n  date\n  content\n  author\n}\n",
+    "text": "query PostsQuery {\n  posts {\n    ...PostStream_posts\n    id\n  }\n}\n\nfragment PostStream_posts on Post {\n  id\n  title\n  content\n  author\n}\n",
     "metadata": {}
   }
 };

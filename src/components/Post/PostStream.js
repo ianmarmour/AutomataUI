@@ -33,8 +33,8 @@ class PostStream extends Component {
 const PostStreamContainer = createFragmentContainer(PostStream, {
   posts: graphql`
     fragment PostStream_posts on Post @relay(plural: true) {
+      id
       title
-      date
       content
       author
     }

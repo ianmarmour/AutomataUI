@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash aa039f2d8919a6614e277099273afbe0
+ * @relayHash dd936237cbe3ed36f6769e748517c90c
  */
 
 /* eslint-disable */
@@ -9,19 +9,16 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-export type postInput = {|
-  title?: ?string,
-  author?: ?string,
-  content?: ?string,
-|};
 export type PostCreateMutationVariables = {|
-  input: postInput
+  title: string,
+  author: string,
+  content: string,
 |};
 export type PostCreateMutationResponse = {|
   +createPost: {|
-    +title: ?string,
-    +content: ?string,
-    +author: ?string,
+    +title: string,
+    +content: string,
+    +author: string,
   |}
 |};
 export type PostCreateMutation = {|
@@ -33,9 +30,11 @@ export type PostCreateMutation = {|
 
 /*
 mutation PostCreateMutation(
-  $input: postInput!
+  $title: String!
+  $author: String!
+  $content: String!
 ) {
-  createPost(input: $input) {
+  createPost(title: $title, author: $author, content: $content) {
     title
     content
     author
@@ -48,17 +47,41 @@ const node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "input",
-    "type": "postInput!",
+    "name": "title",
+    "type": "String!",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "author",
+    "type": "String!",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "content",
+    "type": "String!",
     "defaultValue": null
   }
 ],
 v1 = [
   {
     "kind": "Variable",
-    "name": "input",
-    "variableName": "input",
-    "type": "postInput"
+    "name": "author",
+    "variableName": "author",
+    "type": "String!"
+  },
+  {
+    "kind": "Variable",
+    "name": "content",
+    "variableName": "content",
+    "type": "String!"
+  },
+  {
+    "kind": "Variable",
+    "name": "title",
+    "variableName": "title",
+    "type": "String!"
   }
 ],
 v2 = {
@@ -139,11 +162,11 @@ return {
     "operationKind": "mutation",
     "name": "PostCreateMutation",
     "id": null,
-    "text": "mutation PostCreateMutation(\n  $input: postInput!\n) {\n  createPost(input: $input) {\n    title\n    content\n    author\n    id\n  }\n}\n",
+    "text": "mutation PostCreateMutation(\n  $title: String!\n  $author: String!\n  $content: String!\n) {\n  createPost(title: $title, author: $author, content: $content) {\n    title\n    content\n    author\n    id\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '134573a1d30285e48fe9a4d2f17fe17d';
+(node/*: any*/).hash = 'ecf32989fa077b33964a69e97f777459';
 module.exports = node;

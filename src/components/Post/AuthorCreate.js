@@ -3,18 +3,16 @@ import { commitMutation, graphql } from "react-relay";
 import networkenv from "../../graphql/network";
 
 const mutation = graphql`
-  mutation AuthorCreateMutation($input: authorInput!) {
-    createAuthor(input: $input) {
+  mutation AuthorCreateMutation($name: String!) {
+    createAuthor(name: $name) {
       name
     }
   }
 `;
 
-function createAuthor(name) {
+function createAuthor(authorName) {
   const variables = {
-    input: {
-      name
-    }
+    name: authorName
   };
 
   commitMutation(networkenv, {

@@ -15,17 +15,17 @@ Amplify.configure({
     // REQUIRED - Amazon Cognito Region
     region: "us-west-2",
     // OPTIONAL - Configuration for cookie storage
-    // Note: if the secure flag is set to true, then the cookie transmission requires a secure protocol
+    // Note: if the secure flag is set to true, then the cookie transmission requires a secure
     cookieStorage: {
       // REQUIRED - Cookie domain (only required if cookieStorage is provided)
-      domain: "http://localhost:4000",
+      domain: "localhost",
       // OPTIONAL - Cookie path
       path: "/",
       // OPTIONAL - Cookie expiration in days
       expires: 365,
       // OPTIONAL - Cookie secure flag
       // Either true or false, indicating if the cookie transmission requires a secure protocol (https).
-      secure: true
+      secure: false
     }
   }
 });

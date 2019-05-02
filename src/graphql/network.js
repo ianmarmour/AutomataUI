@@ -41,7 +41,7 @@ const network = new RelayNetworkLayer([
     req.fetchOpts.headers["Access-Control-Allow-Origin"] =
       "http://localhost:4000";
     req.fetchOpts.mode = "cors"; // allow to send cookies (sending credentials to same domains)
-    // req.fetchOpts.credentials = 'include'; // allow to send cookies for CORS (sending credentials to other domains)
+    req.fetchOpts.credentials = "include"; // allow to send cookies for CORS (sending credentials to other domains)
 
     console.log("RelayRequest", req);
 
